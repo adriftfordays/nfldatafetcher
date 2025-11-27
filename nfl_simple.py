@@ -11,4 +11,4 @@ first_game = data['events'][0]
 away = first_game['strAwayTeam']
 home = first_game['strHomeTeam']
 
-'print(f"Next Game: {away} @ {home}")'
+print(f"Next Game: {away} @ {home}")
