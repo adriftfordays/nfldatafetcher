@@ -1,6 +1,6 @@
 # nfldatafetcher
 
-A Python scrip that fetches NFL game data from TheSportsDB API & generates standings reports.
+A Python script that fetches NFL game data from TheSportsDB API & generates standings reports.
 
 ## Features
 - Fetches upcoming NFL games from external API
