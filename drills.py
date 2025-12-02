@@ -1,3 +1,6 @@
+from polars import count
+
+
 teams = ['Lions', 'Packers', 'Cowboys', 'Bears', 'Vikings']
 print(teams[0])
 print(teams[4])
@@ -74,4 +77,39 @@ for g in games:
         winning_team = g['home_team']
         
 print(f"Highest scoring team: {winning_team} with {highest_scoring_game} points")
+
+with open("nfl_games.txt", "r") as file:
+    for line in file:
+      print(line.strip())
+
+with open("nfl_games.txt", "r") as file:
+    count = 0
+    for line in file:
+        count += 1
+    print(f'File has {count} games')
+
+with open("nfl_games.txt", "r") as file:
+    teams = [] #Start with an empty list
+    
+    for line in file:
+        parts = line.strip().split("@")
+        away_team = parts[0].replace("Next Game: ", "").strip()
+        home_team = parts[1].strip()
+        teams.append(away_team)
+        teams.append(home_team)
+    print(teams)
+    
+    def remove_duplicates(teams):
+        unique_list = []
+        for item in list(teams):
+            if item not in unique_list:
+                unique_list.append(item)
+        return unique_list
+    
+    teams = remove_duplicates(teams)
+    teams.sort()
+
+with open("teams.txt", "w") as file:
+    for team in teams:
+        file.write(team + "\n")
 
