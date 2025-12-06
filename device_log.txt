@@ -1,0 +1,6 @@
+2025-12-02 14:23:15 INFO Interface Gi0/1 status changed to UP
+2025-12-02 14:23:22 ERROR Interface Gi0/2 failed authentication
+2025-12-02 14:24:01 INFO Interface Gi0/1 received 1024 packets
+2025-12-02 14:25:33 WARNING High CPU usage detected: 85%
+2025-12-02 14:26:10 ERROR Interface Gi0/3 link down
+2025-12-02 14:27:45 INFO Interface Gi0/2 status changed to UP
