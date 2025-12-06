@@ -25,6 +25,7 @@ def main():
 
         if choice == '1':
             add_contact()
+            save_contacts()
         elif choice == '2':
             view_contacts()
         elif choice == '3':
