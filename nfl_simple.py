@@ -6,6 +6,7 @@ try:
     response = requests.get(url)
     data = response.json()
 
+    
     if 'events' not in data:
         print("Error: No events found in API response")
     elif data['events'] is None:
@@ -27,3 +28,13 @@ except KeyError as e:
     
 
 
+        for game in data ['events'][:5]:
+            away = game['strAwayTeam']
+            home = game['strHomeTeam']
+            print(f"Next Game: {away} @ {home}")
+    
+except requests.exceptions.RequestException as e:
+    print(f"Error connecting to API: {3}")
+except KeyError as e:
+    print(f"Error: Missing expected data field: {3}")
+    
