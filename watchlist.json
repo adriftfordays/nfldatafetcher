@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Test 1",
+    "type": "movie",
+    "recommended_by": "Me",
+    "priority": 1,
+    "date_added": "2025-12-07",
+    "date_watched": null,
+    "rating": null,
+    "notes": null,
+    "imdb_link": "12"
+  },
+  {
+    "title": "Test 2",
+    "type": "tv show",
+    "recommended_by": "You",
+    "priority": 2,
+    "date_added": "2025-12-07",
+    "date_watched": null,
+    "rating": null,
+    "notes": null,
+    "imdb_link": "23"
+  },
+  {
+    "title": "test",
+    "type": "test",
+    "recommended_by": "test",
+    "priority": 2,
+    "date_added": "2025-12-07",
+    "date_watched": null,
+    "rating": null,
+    "notes": null,
+    "imdb_link": "test"
+  },
+  {
+    "title": "test2",
+    "type": "tv show",
+    "recommended_by": "Test 2",
+    "priority": 3,
+    "date_added": "2025-12-07",
+    "date_watched": null,
+    "rating": null,
+    "notes": null,
+    "imdb_link": "Test 3"
+  }
+]
