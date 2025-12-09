@@ -16,7 +16,7 @@ print(teams)
 
 game = {
     "away_team": "Lions",
-    "home_team":"Panthers",
+    "home_team": "Panthers",
     "away_score" : 24,
     "home_score": 30,
 }
