@@ -2,7 +2,6 @@
 # Concepts Covered: Dictionaries, Lists, Functions, File I/O, Input Validation, 
 # Loops (while/for), datetime module, JSON data structure, enumerate(), string formatting
 
-
 import json
 from datetime import datetime
 
@@ -79,6 +78,60 @@ def display_all(watchlist):
         print(f" IMDb: {item['imdb_link']}")
         print()
         
+def mark_watched (watchlist):
+    """Mark an item as watched and add rating/notes"""
+    if not watchlist:
+        print("\nYour watchlist is empty!")
+        return
+    
+    # Show unwatched items only
+    unwatched = [item for item in watchlist if not item['date_watched']]
+    
+    if not unwatched:
+        print("\nNo Unwatched Items!")
+        return
+    
+    print("\n===UNWATCHED ITEMS===")
+    for idx, item in enumerate(unwatched, 1):
+        print(f"{idx}, {item['title']} ({item['type']}) - Priority: {item['priority']}")
+        
+    #Get User Selection
+        while True:
+            try:
+                choice = int(input("\nWhich item did you watch? (number): "))
+                if 1 <= choice <= len(unwatched):
+                    break
+                else:
+                    print(f"Please enter a number between 1 and {len(unwatched)}")
+            except ValueError:
+                print("Please enter a valid number")
+                
+#Get Selected Item
+    selected = unwatched[choice - 1]
+
+# Mark as watched with today's date
+    selected['date_watched'] = datetime.now().strftime('%Y-%m-%d')
+
+#Get Rating
+    while True:
+        try:
+            rating = int(input("Rating (1-5): "))
+            if 1 <= rating <= 5:
+                selected['rating'] = rating
+                break
+            else:
+                print("Rating must be between 1 and 5")
+        except ValueError:
+            print("Please enter a number between 1 and 5")
+        
+#Get Notes (Optional)
+    notes = input("Notes (press Enter to skip): ").strip()
+    if notes:
+        selected['notes'] = notes
+    
+    print(f"\n✓ Marked '{selected['title']}' as watched!")
+                           
+        
 def main():
     """Main Program Loop"""
     watchlist = load_watchlist() # Load existing watchlist or start new
@@ -95,6 +148,7 @@ def main():
         print("1. Add New Item to Watchlist")
         print("2. Display All Items")
         print("3. Exit")
+        print("4. Mark Item as Watched")
         
         choice = input("\nChoice: ").strip()
         
@@ -110,9 +164,13 @@ def main():
         elif choice == '3':
             print("\nGoodbye!")
             break
+        
+        elif choice == '4':
+            mark_watched(watchlist)
+            save_watchlist(watchlist)
             
         else:
-            print("Invalid Choice. Please enter 1, 2, or 3.")
+            print("Invalid Choice. Please enter 1, 2, 3 or 4.")
             
 if __name__ == "__main__":
     main()
