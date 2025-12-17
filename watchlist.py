@@ -130,6 +130,75 @@ def mark_watched (watchlist):
         selected['notes'] = notes
     
     print(f"\n✓ Marked '{selected['title']}' as watched!")
+    
+def search_filter(watchlist):
+    """Search and filter the watchlist"""
+    if not watchlist:
+        print("\nYour watchlist is empty!")
+        return
+    
+    print("\n--- Search & Filter ---")
+    print("1. Search by Title")
+    print("2. Show unwatched only")
+    print("3. Show watched only")
+    print("4. Sort by Priority")
+    print("5. Back to Main Menu")
+    
+    choice = input("\nChoice: ").strip()
+    
+    if choice == '1':
+        #Search By Title
+        search_term = input("Enter search term: ").strip().lower()
+        results = [item for item in watchlist if search_term in item['title'].lower()]
+        
+        if results:
+            print(f"\n ---Found {len(results)} match(es) ---")
+            for idx, item in enumerate(results, 1):
+                status = "✓" if item['date_watched'] else "⏳"
+                print(f"{idx}. {status} {item['title']} - Priority: {item['priority']}")
+                
+        else:
+            print("\nNo Matches Found")
+            
+    if choice == '2':
+        #Show Unwatched Items
+        unwatched = [item for item in watchlist if not item['date_watched']]
+        
+        if unwatched:
+            print("\n=== Unwatched Items ===")
+            for idx, item in enumerate(unwatched, 1):
+                print(f"{idx}. {item['title']} - Priority: {item['priority']}")
+                
+        else:
+            print("\nNo Unwatched Items!")
+            
+    if choice == '3':
+        #Show Watched Items
+        watched = [item for item in watchlist if item['date_watched']]
+        
+        if watched:
+            print(f"\n=== Watched Items ===")
+            for idx, item in enumerate(watched, 1):
+               print(f"{idx}. {item['title']} - Priority: {item['priority']}")
+               
+        else:
+            print("\nNo Watched Items!")
+            
+    if choice == '4':
+        #Show By Priority
+        sorted_list = sorted(watchlist, key=lambda x: x['priority'])
+        
+        if sorted_list:
+            print(f"\n===List Sorted by Priority===")
+            for idx, item in enumerate(sorted_list, 1):
+                status = "✓" if item['date_watched'] else "⏳"
+                print(f"{idx}. {status} {item['title']} - Priority: {item['priority']}")
+            
+        else:
+            print("\nNo List Items!")
+            
+    elif choice == '5':
+        return
                            
         
 def main():
@@ -149,6 +218,7 @@ def main():
         print("2. Display All Items")
         print("3. Exit")
         print("4. Mark Item as Watched")
+        print("5. Search Watchlist")
         
         choice = input("\nChoice: ").strip()
         
@@ -169,8 +239,11 @@ def main():
             mark_watched(watchlist)
             save_watchlist(watchlist)
             
+        elif choice == '5':
+            search_filter(watchlist)
+            
         else:
-            print("Invalid Choice. Please enter 1, 2, 3 or 4.")
+            print("Invalid Choice. Please a choice between 1 and 5.")
             
 if __name__ == "__main__":
     main()
