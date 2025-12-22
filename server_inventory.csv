@@ -1,0 +1,11 @@
+hostname,ip_address,environment,os,cpu_cores,ram_gb,status,last_updated
+web-prod-01,10.0.1.10,production,Ubuntu 22.04,8,32,active,2025-12-15
+web-prod-02,10.0.1.11,production,Ubuntu 22.04,8,32,active,2025-12-15
+db-prod-01,10.0.2.10,production,Ubuntu 22.04,16,64,active,2025-12-14
+db-prod-02,10.0.2.11,production,Ubuntu 22.04,16,64,maintenance,2025-12-20
+api-prod-01,10.0.3.10,production,Ubuntu 22.04,4,16,active,2025-12-15
+web-stage-01,10.1.1.10,staging,Ubuntu 22.04,4,16,active,2025-12-13
+db-stage-01,10.1.2.10,staging,Ubuntu 22.04,8,32,active,2025-12-13
+api-stage-01,10.1.3.10,staging,Ubuntu 22.04,2,8,inactive,2025-12-10
+web-dev-01,10.2.1.10,development,Ubuntu 20.04,2,8,active,2025-12-12
+db-dev-01,10.2.2.10,development,Ubuntu 20.04,4,16,active,2025-12-12
